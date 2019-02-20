@@ -61,7 +61,7 @@ def next_turn (board, n , p):
     #We return the new board that will be our new current board
     return next_board
 
-# Function that return Tru if the Board is empty
+#This Function that return Tru if the Board is empty
 def is_empty (board, n, p):
     empty = True 
     for i in range (n):
@@ -69,6 +69,7 @@ def is_empty (board, n, p):
             empty = empty and board[i][j] == 0
     return empty
 
+#This Function print the board 
 def print_board (board, n, p):
     border = "+" + "-"*p + "+"
     print(border)
@@ -84,12 +85,8 @@ def print_board (board, n, p):
         print(line + "|")
     print(border)
 
-"""
-This section contains all the visual effects such as the creation of the window
-or interactions with the user
-"""
-
-def start (n, p):
+#This Function make the game start with a n*p board
+def start(n, p):
     Board = create_board(n, p)
 
     #Here you can hardcode a starting state or call existing starts
@@ -102,8 +99,12 @@ def start (n, p):
         Board = next_turn(Board, n, p)
         print_board(Board, n, p)
 
-#Here is the call with a 50 * 120 board
-start(50,120)
+"""
+This section contains all the visual effects such as the creation of the window
+or interactions with the user
+"""
+
+#TODO
 
 """
 Here some code in order to display a window
@@ -122,3 +123,8 @@ E1 = Entry(top, bd =5)
 E1.pack(side = RIGHT)
 top.mainloop()
 """
+
+""" Here you can call any function in order to test if they work """
+
+#Here is the call with a 50 * 120 board
+start(50,120)
