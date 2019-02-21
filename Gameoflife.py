@@ -139,28 +139,30 @@ def create_canvas(n,p):
 
     #We create a new board and display it on the canvas
     board = start(n, p)
-    canvas = display_board(board, n, p, canvas)
+    canvas = display_board(board, board, n, p, canvas)
     canvas.pack()
     
     #We make the program run as long as the board is not empty (we can look for oscillating paterns in the future)
     while not is_empty(board, n, p):
-        canvas = display_board(board, n, p, canvas)
+        next_board = next_turn(board, n, p)
+        canvas = display_board(next_board, board, n, p, canvas)
         canvas.pack()
-        board = next_turn(board, n, p)
+        board = next_board
         window.update()
 
         
 #The function display the current board on a new window
-def display_board (Board, n, p, canvas):    
+def display_board (Board, PrevBoard, n, p, canvas):    
 
     for i in range (n):
         for j in range (p):
-            color = ""
-            if Board[i][j] == 1:
-                color = "black"
-            else:
-                color = "white"
-            canvas.create_rectangle(10*j, 10*i, 10*j + 10, 10*i + 10, fill=color, outline="")
+            if Board[i][j] != PrevBoard[i][j]: 
+                color = ""
+                if Board[i][j] == 1:
+                    color = "black"
+                else:
+                    color = "white"
+                canvas.create_rectangle(10*j, 10*i, 10*j + 10, 10*i + 10, fill=color, outline="")
     return canvas
 
 #This function create a window that could get input from the user
