@@ -132,13 +132,9 @@ def create_canvas(n,p):
     height = n*10
     width = p*10
 
-    
+
     #We create the canvas that will display our board so we need to create some cells
     canvas = Canvas(window, width=width, height=height, background="white")
-    for i in range (height):
-        for j in range (width):
-            if i%10 == 0 and j%10 ==0:
-                canvas.create_rectangle(j, i, j + 10, i + 10)
     canvas.pack()
 
     #We create a new board and display it on the canvas
@@ -164,7 +160,7 @@ def display_board (Board, n, p, canvas):
                 color = "black"
             else:
                 color = "white"
-            canvas.create_rectangle(10*j, 10*i, 10*j + 10, 10*i + 10, fill=color)
+            canvas.create_rectangle(10*j, 10*i, 10*j + 10, 10*i + 10, fill=color, outline="")
     return canvas
 
 #This function create a window that could get input from the user
@@ -176,12 +172,12 @@ def create_window():
     label.pack(side = TOP) 
 
     #We create two input fields
-    inp1_label = Label(window, text = "Enter the height of your board")
+    inp1_label = Label(window, text = "Enter the width of your board")
     inp1_label.pack()
     input1 = Entry(window, width=30)
     input1.pack()
 
-    inp2_label = Label(window, text = "Enter the width of your board")
+    inp2_label = Label(window, text = "Enter the height of your board")
     inp2_label.pack()
     input2 = Entry(window, width=30)
     input2.pack()
